@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Session Storage</title>
+  <link href="stile.css" rel="stylesheet">
+</head>
+<body>
+
+<main>
+  <button id="changeModeBtn">Cliccami, dai!</button>
+</main>
+
+<article>
+  <header>
+    <h1>ARTICOLO 1</h1>
+    <p>Post di Get The Cookie</p>
+  </header>
+  Una ricerca dell'università dei biscotti ha dichiarato che chi mette like a questo video possiede un QI superiore
+  alla media
+</article>
+
+<article>
+  <header>
+    <h1>ARTICOLO 2</h1>
+    <p>Post di Get The Cookie</p>
+  </header>
+  Una ricerca dell'università delle caramelle... è inutile, meglio i biscotti!
+</article>
+
+<article>
+  <header>
+    <h1>ARTICOLO 3</h1>
+    <p>Post di Get The Cookie</p>
+  </header>
+  Non so cosa scrivere qui, quindi metti like :)
+</article>
+
+
+
+  <script>
+    const articles = document.getElementsByTagName('article')
+
+    // Controllo iniziale
+    if(!sessionStorage.getItem('mode')){
+      // Non è ancora stata settata tale variabile => la setto di default a lightMode
+      sessionStorage.setItem('mode', 'light')
+    }
+
+    if(sessionStorage.getItem('mode') === 'light')
+      lightMode()
+    else // => sessionStorage.getItem('mode') === 'dark'
+      darkMode()
+
+
+    // Funzioni di appoggio
+    function lightMode(){
+      for(let i=0; i<articles.length; i++){
+        articles[i].classList.remove('article-dark')
+        articles[i].classList.add('article-light')
+      }
+    }
+
+    function darkMode(){
+      for(let i=0; i<articles.length; i++){
+        articles[i].classList.remove('article-light')
+        articles[i].classList.add('article-dark')
+      }
+    }
+
+
+    // Ascoltatore del bottone
+    document.getElementById('changeModeBtn').addEventListener('click', ()=>{
+      if(sessionStorage.getItem('mode') === 'light'){
+        // E' su light mode => imposto su dark mode
+        sessionStorage.setItem('mode', 'dark')
+        darkMode()
+      }
+      else{
+        // => sessionStorage.getItem('mode') === 'dark'
+        sessionStorage.setItem('mode', 'light')
+        lightMode()
+      }
+    })
+  </script>
+</body>
+</html>

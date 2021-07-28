@@ -1,0 +1,28 @@
+main {
+    margin: 50px;
+    text-align: center;
+}
+
+article{
+    margin: 30px;
+    padding: 40px;
+
+}
+    article header p{
+        font-style: italic;
+    }
+
+
+
+/* Da sfruttare con LocalStorage */
+.article-light{
+    background-color: white;
+    color: black;
+    border: solid black;
+}
+
+.article-dark{
+    background-color: black;
+    color: white;
+    border: solid grey;
+}
